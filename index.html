@@ -29,6 +29,8 @@
         .botones {
             margin-top: 20px;
             position: relative;
+            width: 300px;
+            height: 100px;
         }
         button {
             font-size: 18px;
@@ -41,10 +43,14 @@
         #botonSi {
             background-color: green;
             color: white;
+            left: 30px;  /* Posición inicial */
+            top: 20px;
         }
         #botonNo {
             background-color: red;
             color: white;
+            right: 30px; /* Posición inicial */
+            top: 20px;
         }
     </style>
 </head>
@@ -62,9 +68,13 @@
             const botonNo = document.getElementById("botonNo");
             const botonSi = document.getElementById("botonSi");
 
-            // Generar una nueva posición aleatoria
-            const newX = Math.random() * (window.innerWidth - 100);
-            const newY = Math.random() * (window.innerHeight - 50);
+            // Obtener el tamaño de la ventana para limitar los movimientos
+            const maxX = window.innerWidth - 100;
+            const maxY = window.innerHeight - 50;
+
+            // Generar una nueva posición aleatoria dentro de la ventana
+            const newX = Math.random() * maxX;
+            const newY = Math.random() * maxY;
 
             // Mover el botón "No"
             botonNo.style.left = newX + "px";
