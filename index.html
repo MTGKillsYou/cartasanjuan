@@ -60,46 +60,32 @@
     <h1>¿Quieres ser mi San Valentín?</h1>
     <div class="botones">
         <button id="botonSi" onclick="alert('¡Sabía que dirías que sí! ❤️')">Sí</button>
-        <button id="botonNo" onclick="moverBoton()">No</button>
+        <button id="botonNo" onclick="manejarNo()">No</button>
     </div>
 
     <script>
         let sizeSi = 18; // Tamaño inicial del botón "Sí"
-        let attempts = 0; // Contador de intentos
-        const maxAttempts = 8; // Límite de intentos antes de que el "No" desaparezca
 
-        function moverBoton() {
+        function manejarNo() {
             const botonNo = document.getElementById("botonNo");
             const botonSi = document.getElementById("botonSi");
 
-            // Aumentar el conteo de intentos
-            attempts++;
+            // Mostrar un mensaje antes de desaparecer el botón "No"
+            alert("Piénsalo bien... ❤️");
 
-            if (attempts < maxAttempts) {
-                // Obtener el tamaño del botón "No"
-                const botonNoWidth = botonNo.offsetWidth;
-                const botonNoHeight = botonNo.offsetHeight;
+            // Ocultar el botón "No"
+            botonNo.style.display = "none";
 
-                // Definir los límites de la pantalla para que el botón "No" NO se salga
-                const maxX = window.innerWidth - botonNoWidth - 50; // Margen de 50px
-                const maxY = window.innerHeight - botonNoHeight - 50;
-
-                // Generar una nueva posición aleatoria dentro de los límites seguros
-                const newX = Math.max(20, Math.random() * maxX);
-                const newY = Math.max(20, Math.random() * maxY);
-
-                // Mover el botón "No" asegurando que no salga de la pantalla
-                botonNo.style.left = `${newX}px`;
-                botonNo.style.top = `${newY}px`;
-            } else {
-                // Cuando llegue al intento 8, el botón "No" desaparecerá
-                botonNo.style.display = "none";
-            }
-
-            // Hacer crecer el botón "Sí" de manera más notoria
-            sizeSi *= 1.6; // Crece un 60% más en cada intento
+            // Hacer crecer el botón "Sí" mucho más
+            sizeSi *= 2; // Crece el doble cada vez
             botonSi.style.fontSize = `${sizeSi}px`;
             botonSi.style.padding = `${sizeSi / 2.5}px ${sizeSi / 1.5}px`;
+
+            // Reposicionar el botón "Sí" en el centro
+            botonSi.style.position = "absolute";
+            botonSi.style.left = "50%";
+            botonSi.style.top = "50%";
+            botonSi.style.transform = "translate(-50%, -50%)";
         }
     </script>
 </body>
