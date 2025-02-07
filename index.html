@@ -10,7 +10,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url('https://i.ibb.co/GfHsnDS0/istockphoto-1931613147-612x612.jpg');
+            background-image: url('https://i.ibb.co/RGxQNfCD/San-Valentin-width-1600-format-webp.webp');
             background-size: cover;
             background-position: center;
             text-align: center;
@@ -43,9 +43,11 @@
         #botonSi {
             background-color: green;
             color: white;
-            left: 20px;
-            top: 20px;
             border-radius: 10px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
         }
         #botonNo {
             background-color: red;
@@ -70,18 +72,20 @@
             const botonNo = document.getElementById("botonNo");
             const botonSi = document.getElementById("botonSi");
 
-            // Mostrar un mensaje antes de desaparecer el botón "No"
-            alert("Piénsalo bien... ❤️");
+            // Mostrar mensaje antes de desaparecer el botón "No"
+            setTimeout(() => {
+                alert("Piénsalo mejor... ❤️");
+            }, 200); // Pequeña pausa para hacer más fluido
 
             // Ocultar el botón "No"
             botonNo.style.display = "none";
 
             // Hacer crecer el botón "Sí" mucho más
-            sizeSi *= 2; // Crece el doble cada vez
+            sizeSi *= 3; // Crece 3 veces más
             botonSi.style.fontSize = `${sizeSi}px`;
             botonSi.style.padding = `${sizeSi / 2.5}px ${sizeSi / 1.5}px`;
 
-            // Reposicionar el botón "Sí" en el centro
+            // Asegurar que el botón "Sí" se quede en el centro
             botonSi.style.position = "absolute";
             botonSi.style.left = "50%";
             botonSi.style.top = "50%";
