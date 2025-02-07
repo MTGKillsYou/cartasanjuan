@@ -66,7 +66,7 @@
     <script>
         let sizeSi = 18; // Tamaño inicial del botón "Sí"
         let attempts = 0; // Contador de intentos
-        const maxAttempts = 8; // Límite de intentos antes de que el "No" se quede quieto
+        const maxAttempts = 8; // Límite de intentos antes de que el "No" desaparezca
 
         function moverBoton() {
             const botonNo = document.getElementById("botonNo");
@@ -81,20 +81,23 @@
                 const botonNoHeight = botonNo.offsetHeight;
 
                 // Definir los límites de la pantalla para que el botón "No" NO se salga
-                const maxX = window.innerWidth - botonNoWidth - 20; // Dejar un margen de 20px
-                const maxY = window.innerHeight - botonNoHeight - 20;
+                const maxX = window.innerWidth - botonNoWidth - 50; // Margen de 50px
+                const maxY = window.innerHeight - botonNoHeight - 50;
 
-                // Generar una nueva posición aleatoria dentro de los límites
-                const newX = Math.max(10, Math.random() * maxX);
-                const newY = Math.max(10, Math.random() * maxY);
+                // Generar una nueva posición aleatoria dentro de los límites seguros
+                const newX = Math.max(20, Math.random() * maxX);
+                const newY = Math.max(20, Math.random() * maxY);
 
                 // Mover el botón "No" asegurando que no salga de la pantalla
                 botonNo.style.left = `${newX}px`;
                 botonNo.style.top = `${newY}px`;
+            } else {
+                // Cuando llegue al intento 8, el botón "No" desaparecerá
+                botonNo.style.display = "none";
             }
 
             // Hacer crecer el botón "Sí" de manera más notoria
-            sizeSi *= 1.7; // Crece un 70% más en cada intento
+            sizeSi *= 1.6; // Crece un 60% más en cada intento
             botonSi.style.fontSize = `${sizeSi}px`;
             botonSi.style.padding = `${sizeSi / 2.5}px ${sizeSi / 1.5}px`;
         }
