@@ -10,7 +10,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url('https://i.ibb.co/RGxQNfCD/San-Valentin-width-1600-format-webp.webp');
+            background-image: url('https://i.ibb.co/RGxQNfC/San-Valentin-width-1600-format-webp.webp');
             background-size: cover;
             background-position: center;
             text-align: center;
@@ -18,7 +18,7 @@
             color: black;
             flex-direction: column;
             position: relative;
-            overflow: hidden;
+            margin: 0;
         }
         h1 {
             background: rgba(0, 0, 0, 0.5);
@@ -30,8 +30,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 20px;
-            gap: 40px; /* Espacio entre los botones */
+            gap: 20px; /* Espacio entre los botones */
+            position: absolute;
+            top: 55%; /* Ajustar para centrar en la pantalla */
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
         button {
             font-size: 18px;
@@ -68,7 +71,7 @@
             // Mostrar mensaje antes de desaparecer el botón "No"
             setTimeout(() => {
                 alert("Piénsalo mejor... ❤️");
-            }, 200); // Pequeña pausa para hacer más fluido
+            }, 200); 
 
             // Ocultar el botón "No"
             botonNo.style.display = "none";
@@ -77,6 +80,10 @@
             sizeSi *= 3; // Crece 3 veces más
             botonSi.style.fontSize = `${sizeSi}px`;
             botonSi.style.padding = `${sizeSi / 2.5}px ${sizeSi / 1.5}px`;
+
+            // Asegurar que el botón "Sí" quede bien centrado
+            const botonesDiv = document.querySelector(".botones");
+            botonesDiv.style.justifyContent = "center";
         }
     </script>
 </body>
