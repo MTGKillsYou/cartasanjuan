@@ -15,25 +15,66 @@
             background-position: center;
             text-align: center;
             font-family: Arial, sans-serif;
-            color: white;
+            color: black;
             flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
         }
         .botones {
             margin-top: 20px;
+            position: relative;
         }
         button {
             font-size: 18px;
             padding: 10px 20px;
             margin: 10px;
             cursor: pointer;
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+        #botonSi {
+            background-color: green;
+            color: white;
+        }
+        #botonNo {
+            background-color: red;
+            color: white;
         }
     </style>
 </head>
 <body>
     <h1>¿Quieres ser mi San Valentín?</h1>
     <div class="botones">
-        <button onclick="alert('¡Sabía que dirías que sí! ❤️')">Sí</button>
-        <button onclick="alert('No hay opción, vuelve a pensarlo 🥺')">No</button>
+        <button id="botonSi" onclick="alert('¡Sabía que dirías que sí! ❤️')">Sí</button>
+        <button id="botonNo" onclick="moverBoton()">No</button>
     </div>
+
+    <script>
+        let sizeSi = 18; // Tamaño inicial del botón "Sí"
+
+        function moverBoton() {
+            const botonNo = document.getElementById("botonNo");
+            const botonSi = document.getElementById("botonSi");
+
+            // Generar una nueva posición aleatoria
+            const newX = Math.random() * (window.innerWidth - 100);
+            const newY = Math.random() * (window.innerHeight - 50);
+
+            // Mover el botón "No"
+            botonNo.style.left = newX + "px";
+            botonNo.style.top = newY + "px";
+
+            // Hacer crecer el botón "Sí"
+            sizeSi += 5;
+            botonSi.style.fontSize = sizeSi + "px";
+            botonSi.style.padding = (sizeSi / 3) + "px " + (sizeSi / 2) + "px";
+        }
+    </script>
 </body>
 </html>
